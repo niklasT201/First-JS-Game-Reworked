@@ -129,11 +129,51 @@ function checkCollision() {
     });
 }
 
+// Function to show game over menu
+function showGameOverMenu() {
+    // Set game state to paused
+    gamepaused = true;
+
+    // Create a <div> element for the game over menu
+    const gameOverMenu = document.createElement('div');
+    gameOverMenu.id = 'gameOverMenu';
+
+    // Create a <label> element for the game over text
+    const gameOverLabel = document.createElement('label');
+    gameOverLabel.textContent = 'Game Over';
+    gameOverLabel.style.display = 'block'; // Ensure the label is displayed as a block-level element
+    gameOverLabel.style.marginBottom = '20px'; // Add some space below the label
+    gameOverMenu.appendChild(gameOverLabel);
+
+    // Create a <button> element for the restart button
+    const restartButton = document.createElement('button');
+    restartButton.textContent = 'Restart';
+    restartButton.addEventListener('click', resetGame);
+    gameOverMenu.appendChild(restartButton);
+
+    // Append the <div> element to the document body
+    document.body.appendChild(gameOverMenu);
+}
+
+// Function to remove game over menu
+function removeGameOverMenu() {
+    const gameOverMenu = document.getElementById('gameOverMenu');
+    if (gameOverMenu) {
+        gameOverMenu.parentNode.removeChild(gameOverMenu);
+    }
+}
+
 
 // Function to end the game
 function endGame() {
-    alert('Game Over. Score: ' + score);
-    resetGame();
+    /* alert('Game Over. Score: ' + score);
+    resetGame(); */
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Show game over menu
+    showGameOverMenu();
 }
 
 
@@ -141,9 +181,18 @@ function endGame() {
 
 // Function to reset the game
 function resetGame() {
+    // Remove game over menu
+    removeGameOverMenu();
+    updateHighscore();
+
     // Reset player position
     characterY = 300;
     isJumping = false;
+
+    // Check if highscore is not set in local storage
+    if (localStorage.getItem("highScore") === null) {
+        highscore = 0; // Set highscore to 0 if it's not set in local storage
+    }
 
     /* highscore = 0; */
     score = 0;

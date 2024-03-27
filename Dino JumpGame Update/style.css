@@ -38,3 +38,41 @@ p {
     width: 50px;
     border-bottom: 2px solid #333;
 }
+
+/* CSS styles for the game over menu */
+#gameOverMenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 610px;
+    transform: translate(-50%, -102%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 150px;
+    border-radius: 10px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+#gameOverMenu label {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#gameOverMenu button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#gameOverMenu button:hover {
+    background-color: #CC0000;
+}
+
+
+
+
