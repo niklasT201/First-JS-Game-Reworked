@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#gameCanvas {
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    border: 5px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#scoreSpan, #timerSpan, #highScore {
+    font-weight: bold;
+    color: #333;
+}
+
+#scoreSpan::before, #timerSpan::before, #highScore::before {
+    content: " ";
+    display: block;
+    height: 10px;
+    margin: 0 auto 5px;
+    width: 50px;
+    border-bottom: 2px solid #333;
+}
+
+/* CSS styles for the game over menu */
+#gameOverMenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 610px;
+    transform: translate(-50%, -102%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 150px;
+    border-radius: 10px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+#gameOverMenu label {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#gameOverMenu button {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#gameOverMenu button:hover {
+    background-color: #CC0000;
+}
+
+
+
+
