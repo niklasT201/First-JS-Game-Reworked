@@ -3,9 +3,9 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Define game variables
-let characterY = 300;
-let characterHeight = 30; // Adjusted for better collision detection
-let blockY = 290;
+let characterY = 250;
+let characterHeight = 110; // Adjusted for better collision detection
+/* let blockY = 290; */
 let isJumping = false;
 let score = 0;
 let highscore = localStorage.getItem("highScore");
@@ -16,19 +16,36 @@ let collided = false;
 let isFirstEnemySpawned = false;
 let gamepaused = false;
 
+// Load sprite sheets
+const backgroundImage = new Image();
+backgroundImage.src = 'Background.png';
+
+const playerImage = new Image();
+playerImage.src = 'player_sprite_sheet.jpeg';
+
+const enemyImage = new Image();
+enemyImage.src = 'enemy_sprite_sheet.jpeg';
+
 // Function to draw everything
 function draw() {
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw character
-    ctx.fillStyle = '#0000FF';
-    ctx.fillRect(50, characterY, 30, characterHeight);
+    // Draw background
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+     // Draw character
+    // Assuming the character sprite is at position (0, 0) in the sprite sheet
+    const characterWidth = 120; // Or a fixed value based on desired size
+    const characterScaleFactor = 0.6; // Experiment with this value
+    ctx.drawImage(playerImage, 64.9, 0, 45, 93, 40, characterY, characterWidth * characterScaleFactor, characterHeight);
 
     // Draw enemies
-    ctx.fillStyle = '#FF0000';
     enemies.forEach(enemy => {
-        ctx.fillRect(enemy.x, enemy.y, 30, 30);
+        const enemyWidth = 120; // Or a fixed value based on desired size
+        const enemyScaleFactor = 0.6; // Experiment with this value
+        // Assuming the enemy sprite is at position (0, 0) in the sprite sheet
+        ctx.drawImage(enemyImage, 210, 15, 85, 103, enemy.x, enemy.y, enemyWidth * enemyScaleFactor, 50);
     });
 }
 
@@ -186,7 +203,7 @@ function resetGame() {
     updateHighscore();
 
     // Reset player position
-    characterY = 300;
+    characterY = 250;
     isJumping = false;
 
     // Check if highscore is not set in local storage
